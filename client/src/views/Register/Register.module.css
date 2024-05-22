@@ -1,112 +1,55 @@
-/* .registerContainer {
+.registerBackground {
+    background-color: #fff8f0; /* Fondo blanco */
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.registerForm {
+    margin: auto;
+  }
+  
+  .registerTitle {
+    color: #dd3d15; /* Color naranja */
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .registerSubtitle {
+    color: #555;
+    margin-bottom: 2rem;
+  }
+  
+  .smokyGray {
+    color: #555; /* Color gris ahumado */
+  }
+  
+  .cardGroup {
+    width: 100%;
+    max-width: 900px; /* Ajuste del ancho máximo */
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-}
+    flex-wrap: wrap;
+  }
 
-.formGroup {
-    margin-bottom: 15px;
-}
-
-label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-input, select {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.registerButton {
-    background-color: #DD3D15;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+  .cardGroup .card{
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
+  
+  .card {
+    flex: 1 1 300px; /* Ajuste de ancho mínimo para cada tarjeta */
+    margin: 10px;
+  }
+  
+  .loginLink {
     margin-top: 10px;
-}
+    color: #555; /* Color gris ahumado */
+    text-align: center;
+  }
+  
+  .login {
+    color: #dd3d15; /* Color naranja */
+  }
 
-.registerButton:hover {
-    background-color: #B5DD15;
-} */
-
-
-/* Register.module.css */
-
-.registerContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.registerForm {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-}
-
-.formGroup {
-    margin-bottom: 15px;
-}
-
-label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-input, select {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.registerButton {
-    background-color: #DD3D15;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-.registerButton:hover {
-    background-color: #B5DD15;
-}
-
-.loginLink {
-    font-size: 14px;
-    color: #333;
-    margin-top: 10px;
-}
-
-.inicia {
-    text-decoration: none;
-}
+ 
+  
