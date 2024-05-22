@@ -1,0 +1,19 @@
+{
+  "name": "pollos-a-un-click",
+  "version": "1.0.0",
+  "description": "aplicación para control de pedidos de pollos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rricozdev/pollos-a-un-click.git"
+  },
+  "author": "rricozdev, cipa unidos somos mas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rricozdev/pollos-a-un-click/issues"
+  },
+  "homepage": "https://github.com/rricozdev/pollos-a-un-click#readme"
+}

@@ -1,0 +1,36 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "servidor pollos a un click",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rricozdev/pollos-a-un-click.git"
+  },
+  "keywords": [
+    "servidor",
+    "api",
+    "aplicación"
+  ],
+  "author": "rricozdev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rricozdev/pollos-a-un-click/issues"
+  },
+  "homepage": "https://github.com/rricozdev/pollos-a-un-click#readme",
+  "dependencies": {
+    "axios": "^1.7.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.0",
+    "pg": "^8.11.5",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3"
+  }
+}

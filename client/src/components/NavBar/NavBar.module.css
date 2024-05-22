@@ -1,0 +1,33 @@
+/* NavBar.module.css */
+
+.navBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DD3D15;
+    padding: 10px;
+    width: 100%;
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.icon {
+    margin-right: 5px;
+    font-size: 24px;
+}
+
+.linkText {
+    display: none;
+}
+
+@media (min-width: 600px) {
+    .linkText {
+        display: inline;
+    }
+}
