@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import {
   CButton,
   CCard,
@@ -14,9 +14,60 @@ import {
   CRow,
 } from "@coreui/react";
 import { FaUser, FaLock } from "react-icons/fa";
+import axios from "axios"; // Importa Axios
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import styles from "./Login.module.css";
 
+const MySwal = withReactContent(Swal);
+
 const Login = () => {
+  const [formData, setFormData] = useState({
+    id: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post("http://localhost:3001/login", formData); // Utiliza Axios para realizar la solicitud POST
+
+      // Verifica si la respuesta es exitosa (código de estado 2xx)
+      if (response.status >= 200 && response.status < 300) {
+        // Muestra una alerta de éxito
+        MySwal.fire({
+          icon: 'success',
+          title: '¡Inicio de sesión exitoso!',
+          text: '¡Bienvenido de vuelta!',
+          confirmButtonText: 'Ok'
+        }).then(() => {
+          // limpiamos el formulario
+          setFormData({ id: "", password: "" });
+          // Redirecciona al usuario a la página de inicio o a otra página dentro de la aplicación
+          return <Navigate to="/dashboard" />;
+        });
+      } else {
+        throw new Error("Error al iniciar sesión");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      // Muestra una alerta de error
+      MySwal.fire({
+        icon: 'error',
+        title: 'Error al iniciar sesión',
+        text: 'Por favor, verifica tus credenciales e intenta de nuevo.',
+        confirmButtonText: 'Ok'
+      });
+    }
+  };
+
   return (
     <div className={styles.loginBackground}>
       <CContainer>
@@ -33,6 +84,9 @@ const Login = () => {
                         <FaUser className={styles.smokyGray}/>
                       </CInputGroupText>
                       <CFormInput
+                        name="id"
+                        value={formData.id}
+                        onChange={handleChange}
                         placeholder="Número de identificación"
                         autoComplete="username"
                       />
@@ -43,6 +97,9 @@ const Login = () => {
                       </CInputGroupText>
                       <CFormInput
                         type="password"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
                         placeholder="Contraseña"
                         autoComplete="current-password"
                       />
@@ -50,6 +107,7 @@ const Login = () => {
                     <CRow>
                       <CCol xs={6}>
                         <CButton
+                          onClick={handleLogin}
                           color="primary"
                           className={`px-3 ${styles.loginButton}`}
                         >
@@ -88,3 +146,4 @@ const Login = () => {
 };
 
 export default Login;
+

@@ -1,5 +1,6 @@
 const { User } = require('../db');
 const { Op } = require('sequelize');
+const bcrypt = require('bcryptjs');
 
 
 // Get/users?name='Yuranis'
@@ -47,11 +48,28 @@ const getUsers = async () => {
 
 
 // Post/user - creando un usuario
-const createUser = async (name, surnames, id, email, password, userType ) => {
-    const newUser = await User.create({name, surnames, id, email, password , userType});
+// const createUser = async (name, surnames, id, email, password, userType ) => {
+//     const newUser = await User.create({name, surnames, id, email, password , userType});
 
-    return newUser;
+//     return newUser;
+// };
+
+const createUser = async (name, surnames, id, email, password, userType) => {
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+  
+  const newUser = await User.create({
+    name,
+    surnames,
+    id,
+    email,
+    password: hashedPassword,
+    userType
+  });
+
+  return newUser;
 };
+
 
 
 // Update/user -actualizar un usuario
@@ -95,6 +113,8 @@ const deleteUser = async (id) => {
 
     return user;
 };
+
+
 
 
 module.exports = {

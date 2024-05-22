@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const usersRouter = require('./usersRouter');
+const authRouter = require('./authRouter');
 
 const mainRouter = Router();
 
@@ -9,10 +10,13 @@ const mainRouter = Router();
 //     res.status(200).send('Estamos en LandingPage!!!')
 // })
 
-// 4 rutas
+// 5 rutas
 // Usuarios
 
 mainRouter.use('/users', usersRouter );
+
+// Autenticación básica
+mainRouter.use('/login', authRouter); 
 
 // Produccion
 mainRouter.use('/productions', (req, res) => {

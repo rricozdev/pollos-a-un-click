@@ -22,6 +22,6 @@ usersRouter.post('/', createUserHandler);
 usersRouter.put('/:id', updateUserHandler)
 
 // Delete
-usersRouter.delete('/:id',  deleteUserHandler)
+usersRouter.delete('/:id',  deleteUserHandler);
 
 module.exports = usersRouter;
