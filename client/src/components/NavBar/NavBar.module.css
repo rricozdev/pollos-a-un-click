@@ -1,33 +1,52 @@
-/* NavBar.module.css */
-
-.navBar {
+/* Navbar.module.css */
+.navigation {
+    font-family: 'Mulish', sans-serif;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navList {
+    list-style-type: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #DD3D15;
-    padding: 10px;
+    padding: 0;
+  }
+  
+  .navList li {
+    margin-right: 20px;
+  }
+  
+  .navList li.active::after {
+    content: '';
+    display: block;
     width: 100%;
-}
-
-.navLink {
+    height: 2px;
+    background-color: #007bff; /* Cambia el color según sea necesario */
+    margin-top: 5px;
+  }
+  
+  .navList li:last-child {
+    margin-right: 0;
+  }
+  
+  .navList li a {
+    text-decoration: none;
+    color: black;
     display: flex;
     align-items: center;
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.icon {
+  }
+  
+  .icon {
     margin-right: 5px;
-    font-size: 24px;
-}
-
-.linkText {
-    display: none;
-}
-
-@media (min-width: 600px) {
-    .linkText {
-        display: inline;
-    }
-}
+  }
+  
+  .activeBar {
+    background-color: #007bff; /* Cambia el color según sea necesario */
+    height: 2px;
+    width: 50px;
+    position: absolute;
+    bottom: 0;
+    transition: width 0.3s ease;
+  }
+  

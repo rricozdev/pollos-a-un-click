@@ -1,0 +1,32 @@
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: #fff;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.nav {
+    margin-top: 20px;
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 0;
+    transition: background 0.3s;
+}
+
+.navLink:hover {
+    background-color: #495057;
+    padding-left: 10px;
+}
+
+.navLink svg {
+    margin-right: 10px;
+}

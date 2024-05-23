@@ -10,7 +10,7 @@ const Header = () => {
                 <div className={styles.background}>
                     <img src={chickenImage} alt="Chicken" className={styles.image} />
                     <h2 className={styles.subtitle}>Conecta con los productores locales </h2>
-                    <p className={styles.description}>
+                    <p  className={styles.description}>
                         Facilitamos la compra y pedido de pollos en tu área, eliminando intermediarios y asegurando siempre la demanda justa sin sobreproducción.
                     </p>
                     <Link to="/login" className={styles.button}>Comenzar</Link>

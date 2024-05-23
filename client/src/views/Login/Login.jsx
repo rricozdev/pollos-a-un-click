@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   CButton,
   CCard,
@@ -18,6 +18,7 @@ import axios from "axios"; // Importa Axios
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import styles from "./Login.module.css";
+import NavBar from "../../components/NavBar/NavBar";
 
 const MySwal = withReactContent(Swal);
 
@@ -26,6 +27,8 @@ const Login = () => {
     id: "",
     password: "",
   });
+
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,8 +53,7 @@ const Login = () => {
         }).then(() => {
           // limpiamos el formulario
           setFormData({ id: "", password: "" });
-          // Redirecciona al usuario a la página de inicio o a otra página dentro de la aplicación
-          return <Navigate to="/dashboard" />;
+          navigate("/dashboard");
         });
       } else {
         throw new Error("Error al iniciar sesión");
@@ -146,4 +148,5 @@ const Login = () => {
 };
 
 export default Login;
+
 

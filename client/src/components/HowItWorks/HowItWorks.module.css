@@ -11,7 +11,7 @@
 .howItWorks p {
     font-size: 3vw;
     font-weight: 300;
-   
+    color: inherit ;   
 }
 
 
