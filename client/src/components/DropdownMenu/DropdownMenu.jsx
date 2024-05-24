@@ -38,7 +38,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <header>
+        <header className="header">
             <span className="navigation__group">
                 <img className="icon" src={messageIcon} alt="Message" />
                 <img className="icon" src={notificationIcon} alt="Notification" />
