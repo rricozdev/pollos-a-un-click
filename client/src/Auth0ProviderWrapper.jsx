@@ -17,7 +17,7 @@ const Auth0ProviderWithHistory = ({ children, navigate }) => {
     <Auth0Provider
       domain={domain}
       clientId={clientId}
-      authorizationParams={{ redirect_uri: window.location.origin }}
+      authorizationParams={{ redirect_uri:  `${window.location.origin}/register` }}
       onRedirectCallback={onRedirectCallback}
     >
       {children}

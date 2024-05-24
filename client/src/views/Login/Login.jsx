@@ -18,8 +18,7 @@ import axios from "axios"; // Importa Axios
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import styles from "./Login.module.css";
-import NavBar from "../../components/NavBar/NavBar";
-
+// import NavBar from "../../components/NavBar/NavBar";
 const MySwal = withReactContent(Swal);
 
 const Login = () => {
