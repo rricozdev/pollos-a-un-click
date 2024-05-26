@@ -1,0 +1,155 @@
+/* .sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    box-sizing: border-box;
+  }
+  
+  .profilePicture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  
+  .profileName {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .profileEmail {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .menuItem {
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .menuItem:hover {
+    background-color: #f0f2f5;
+  }
+  
+  .icon {
+    margin-right: 10px;
+    color: #1877f2;
+  }
+  
+  @media (max-width: 480px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      box-shadow: none;
+      border-top: 1px solid #dddfe2;
+      padding-bottom: 20px;
+    }
+  }
+   */
+
+   /* Profile.module.css */
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+
+.profilePicture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.profileName {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.profileEmail {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.menuItem {
+  width: 100%;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.menuItem:hover {
+  background-color: #f0f2f5;
+}
+
+.icon {
+  margin-right: 10px;
+  margin-left: 20px;
+  color: #007bff;
+}
+
+.logoutItem {
+  margin-top: auto;
+  /* width: 100%; */
+  padding: 15px 20px;
+  width: calc(100% - 40px);
+}
+
+.logoutItem button {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  color: #fff;
+
+  background-color: #d93025;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+  transition: background-color 0.3s;
+}
+
+.logoutItem button:hover {
+  background-color: #ea4335;
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+    border-top: 1px solid #dddfe2;
+    padding-bottom: 20px;
+    padding-left: 0;
+  }
+
+  .logoutItem {
+    width: 100%; /* Ajusta el ancho para pantallas más pequeñas */
+  }
+}
