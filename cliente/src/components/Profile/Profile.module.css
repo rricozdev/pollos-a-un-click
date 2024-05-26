@@ -60,8 +60,8 @@
   }
    */
 
-   /* Profile.module.css */
-.sidebar {
+
+/* .sidebar {
   width: 280px;
   height: 100vh;
   background-color: #ffffff;
@@ -116,7 +116,6 @@
 
 .logoutItem {
   margin-top: auto;
-  /* width: 100%; */
   padding: 15px 20px;
   width: calc(100% - 40px);
 }
@@ -150,6 +149,122 @@
   }
 
   .logoutItem {
-    width: 100%; /* Ajusta el ancho para pantallas más pequeñas */
+    width: 100%; 
   }
+} */
+
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profileForm {
+  flex: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profilePicture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profileName {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.profileEmail {
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.menuItem .icon {
+  margin-right: 10px;
+}
+
+.logoutItem {
+  margin-top: auto;
+  padding: 15px 20px;
+  width: calc(100% - 40px);
+}
+.logoutItem button {
+  /* margin-top: auto;
+  text-align: center; */
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  color: #fff;
+
+  background-color: #d93025;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+  transition: background-color 0.3s;
+}
+
+.logoutItem button:hover {
+  background-color: #ea4335;
+}
+
+.form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.formGroup input,
+.formGroup select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: #0056b3;
 }

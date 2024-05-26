@@ -3,20 +3,20 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     sequelize.define('User', {
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true,
-            unique: true,
+            autoIncrement: true,            
         },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        surnames: {
+        identification: {
             type: DataTypes.STRING,
             allowNull: false,
+            primaryKey: true,
+            unique: true
         },
-
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -26,14 +26,9 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        userType: {
+        role: {
             type: DataTypes.ENUM('productor', 'tendero'),
             allowNull: false,
         },
-        deleted: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false // Por defecto, un usuario no está marcado como eliminado
-        }
-
     });
 };

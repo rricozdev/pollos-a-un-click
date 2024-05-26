@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
             allowNull: false,
             defaultValue: 'pendiente',
         },
-        UserId: {
+        UserIdentification: {
             type: DataTypes.STRING,
             allowNull: false,
         }

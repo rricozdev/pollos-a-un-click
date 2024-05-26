@@ -1,6 +1,6 @@
 const {
   searchUserByName,
-  getUserById,
+  getUserByidentification,
   getUsers,
   createUser,
   updateUser,
@@ -22,11 +22,11 @@ const getUsersHandler = async (req, res) => {
 
 // Get/users/{:id} - obtener usuario por id
 const getUserByIdHandler = async (req, res) => {
-  const { id } = req.params;
-  console.log("esto es id:", id);
+  const { identification } = req.params;
+  console.log("esto es identification:", identification);
 
   try {
-    const user = await getUserById(id);
+    const user = await getUserByidentification(identification);
 
     res.status(200).json(user);
   } catch (error) {
@@ -41,9 +41,9 @@ const createUserHandler = async (req, res) => {
   try {
     console.log("Params:", req.params);
     console.log("Body:", req.body);
-    const { name, surnames, id, email, password, userType } = req.body;
+    const { name, identification, email, password, role } = req.body;
 
-    const newUser = await createUser(name, surnames, id, email, password, userType);
+    const newUser = await createUser(name, identification, email, password, role);
     res.status(201).json(newUser);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -53,22 +53,21 @@ const createUserHandler = async (req, res) => {
 // Put/users - actualizar un usuario
 const updateUserHandler = async (req, res) => {
   try {
-    const { id } = req.params; // Obtén el id del usuario de los parámetros de la ruta
-    const { name, surnames, email, password, userType } = req.body;
+    const { identification } = req.params; // Obtén el id del usuario de los parámetros de la ruta
+    const { name,  email, password, role } = req.body;
 
     // Verificar si se proporcionó al menos un campo para actualizar
-    if (!name && !surnames && !email && !password && !userType) {
+    if (!name && !email && !password && !role) {
       throw new Error("Debe proporcionar al menos un campo para actualizar.");
     }
 
     // Llama a la función updateUser del controlador, que interactúa con la base de datos y el modelo
     const updatedUser = await updateUser(
-      id, // Utiliza el id del usuario obtenido de los parámetros de la ruta
-      name,
-      surnames,
+      identification, // Utiliza el id del usuario obtenido de los parámetros de la ruta
+      name,      
       email,
       password,
-      userType
+      role
     );
 
     res.status(200).json(updatedUser);
@@ -81,9 +80,9 @@ const updateUserHandler = async (req, res) => {
 // Delete
 const deleteUserHandler = async (req, res) => {
   try {
-      const { id } = req.params;
+      const { identification } = req.params;
       await deleteUser(id);
-      res.status(200).json({ message: `Usuario con id ${id} ha sido eliminado lógicamente.` });
+      res.status(200).json({ message: `Usuario con id ${identification} ha sido eliminado lógicamente.` });
   } catch (error) {
       res.status(400).json({ error: error.message });
   }

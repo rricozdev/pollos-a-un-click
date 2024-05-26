@@ -12,11 +12,11 @@ module.exports = (sequelize) => {
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        remitenteId: {
+        remitenteIdentification: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        destinatarioId: {
+        destinatarioIdentification: {
             type: DataTypes.STRING,
             allowNull: false,
         },

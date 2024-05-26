@@ -149,7 +149,7 @@
 
 .loginButton {
   /* background-color: #1877f2; */
-  background-color: #870000;
+  background-color: #c82c1d;
   border: none;
   color: white;
   padding: 14px;
@@ -162,7 +162,28 @@
 }
 
 .loginButton:hover {
-  background-color: #c82c1d;
+  background-color: #FFD700;
+  color: #333;
+  font-weight: bold;
+}
+
+.googleBtn {
+  margin-top: 1px;
+  background-color: #4285F4 ;
+  border: none;
+  color: white;
+  padding: 14px;
+  width: 100%;
+  font-size: 16px;
+  margin: 20px 0;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.googleBtn:hover {
+  background-color: #4CAF50;
+  font-weight: bold;
 }
 
 @media (max-width: 768px) {
