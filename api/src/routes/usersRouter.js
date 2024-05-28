@@ -1,7 +1,9 @@
+// Rutas
 const { Router } = require('express');
 const {
     getUsersHandler,
-    getUserByIdHandler, 
+    getUserByIdHandler,
+    getUserByEmailHandler, 
     createUserHandler,
     updateUserHandler,
     deleteUserHandler
@@ -12,16 +14,21 @@ const usersRouter = Router();
 // Get-users
 usersRouter.get('/', getUsersHandler);
 
-// Get/users/{:id}
-usersRouter.get('/:id', getUserByIdHandler);
+// Get/users/email - query
+usersRouter.get('/email', getUserByEmailHandler); // Cambiado a 'email' y asignado a getUserByEmailHandler
+
+// Get/users/:identification - params
+usersRouter.get('/:identification', getUserByIdHandler);
+
 
 // Post -users
 usersRouter.post('/', createUserHandler);
 
 // Put
-usersRouter.put('/:id', updateUserHandler)
+usersRouter.put('/:identification', updateUserHandler);
 
 // Delete
-usersRouter.delete('/:id',  deleteUserHandler);
+usersRouter.delete('/:identification', deleteUserHandler);
 
 module.exports = usersRouter;
+

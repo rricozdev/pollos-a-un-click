@@ -1,6 +1,7 @@
 const {
   searchUserByName,
   getUserByidentification,
+  getUserByEmail,
   getUsers,
   createUser,
   updateUser,
@@ -20,7 +21,8 @@ const getUsersHandler = async (req, res) => {
   }
 };
 
-// Get/users/{:id} - obtener usuario por id
+
+// Get/users/{:identification} - obtener usuario por id
 const getUserByIdHandler = async (req, res) => {
   const { identification } = req.params;
   console.log("esto es identification:", identification);
@@ -34,6 +36,24 @@ const getUserByIdHandler = async (req, res) => {
   }
 };
 
+
+// Get/users - obtener user por email , consulta en db
+//ejemplo: Get ---> http://localhost:3001/users/email?email=ytesillo@unicartagena.edu.co
+const getUserByEmailHandler = async (req, res) => {
+  const { email } = req.query; // Usar req.query para obtener el email desde la URL
+
+  try {
+    const userByEmail = await getUserByEmail(email);
+    console.log(`Esto es user by email: ${userByEmail}`);
+    if (userByEmail.length > 0) {
+      res.status(200).json(userByEmail);
+    } else {
+      res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
 
 
 // Post/users - crear un usuario
@@ -81,7 +101,7 @@ const updateUserHandler = async (req, res) => {
 const deleteUserHandler = async (req, res) => {
   try {
       const { identification } = req.params;
-      await deleteUser(id);
+      await deleteUser(identification);
       res.status(200).json({ message: `Usuario con id ${identification} ha sido eliminado lógicamente.` });
   } catch (error) {
       res.status(400).json({ error: error.message });
@@ -91,7 +111,9 @@ const deleteUserHandler = async (req, res) => {
 module.exports = {
   getUsersHandler,
   getUserByIdHandler,
+  getUserByEmailHandler,
   createUserHandler,
   updateUserHandler,
   deleteUserHandler
 };
+

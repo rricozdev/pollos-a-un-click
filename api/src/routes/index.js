@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const usersRouter = require('./usersRouter');
 const authRouter = require('./authRouter');
+const pedidosRouter = require('./pedidosRouter');
 
 const mainRouter = Router();
 
@@ -10,32 +11,24 @@ const mainRouter = Router();
 //     res.status(200).send('Estamos en LandingPage!!!')
 // })
 
-// 5 rutas
-// Usuarios
+// 4 rutas
 
+// Usuarios
 mainRouter.use('/users', usersRouter );
 
-// Autenticación básica
+// Autenticación 
 mainRouter.use('/login', authRouter); 
 
-// Produccion
-mainRouter.use('/productions', (req, res) => {
-    console.log('Estamos en productions');
-    res.status(200).send('Estamos en PRODUCTIONS!!!')
-} );
-
-
 // Pedidos
-mainRouter.use('/pedidos', (req, res) => {
-    console.log('Estamos en pedidos');
-    res.status(200).send('Estamos en PEDIDOS!!!')
+mainRouter.use('/pedidos', pedidosRouter );
+
+// notificaciones
+mainRouter.use('/notificaciones', (req, res) => {
+    console.log('Estamos en notificaciones');
+    res.status(200).send('Estamos en Notificaciones!!!')
 } );
 
-// Mensajes
-mainRouter.use('/mensajes', (req, res) => {
-    console.log('Estamos en mensajes');
-    res.status(200).send('Estamos en mensajes!!!')
-} );
+
 
 
 
