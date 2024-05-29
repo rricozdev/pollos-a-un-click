@@ -3,6 +3,8 @@ const {
   getUserByidentification,
   getUserByEmail,
   getUsers,
+  getUsersWithPedidos,
+  getUserWithPedidosByIdentification,
   createUser,
   updateUser,
   deleteUser
@@ -54,6 +56,9 @@ const getUserByEmailHandler = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 }
+
+
+
 
 
 // Post/users - crear un usuario

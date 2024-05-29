@@ -60,6 +60,12 @@ const Profile = () => {
             role: userData.role,
           });
           setIsRegistered(true);
+
+          // Guardar el tenderoId en localStorage
+          if (userData.role === "tendero") {
+            console.log("Guardando tenderoId en localStorage:", userData.id);
+            localStorage.setItem("tenderoId", userData.id);
+          }
         }
       } catch (error) {
         console.error("Error al verificar el registro:", error);
@@ -173,15 +179,13 @@ const Profile = () => {
                 <FaUserCircle className={styles.icon} />
                 <span>Mi Perfil</span>
               </div>
-              <div className={styles.menuItem}>
-                <FaCalendarAlt className={styles.icon} />
-                <span>Calendario</span>
-              </div>
-              <div className={styles.menuItem}>
-                <FaFacebookMessenger className={styles.icon} />
-                <span>Mensajes</span>
-              </div>
-              <div className={styles.menuItem} style={{ color: formData.role === 'tendero' ? '#4fa94d' : 'inherit' }}>
+
+              <div
+                className={styles.menuItem}
+                style={{
+                  color: formData.role === "tendero" ? "#4fa94d" : "inherit",
+                }}
+              >
                 <FaBox className={styles.icon} />
                 <span>Mis Pedidos</span>
               </div>
@@ -193,6 +197,15 @@ const Profile = () => {
                 <FaChartLine className={styles.icon} />
                 <span>Mis Ventas</span>
               </div>
+              <div className={styles.menuItem}>
+                <FaFacebookMessenger className={styles.icon} />
+                <span>Mensajes</span>
+              </div>
+              <div className={styles.menuItem}>
+                <FaCalendarAlt className={styles.icon} />
+                <span>Calendario</span>
+              </div>
+
               <div className={styles.logoutItem}>
                 <button
                   onClick={() =>
@@ -205,8 +218,8 @@ const Profile = () => {
                 </button>
               </div>
             </div>
-            {formData.role === 'tendero' && <TenderoPedidos />}
-            {formData.role === 'productor' && <ProductorPedidos />}
+            {formData.role === "tendero" && <TenderoPedidos />}
+            {formData.role === "productor" && <ProductorPedidos />}
           </div>
         ) : (
           <div className={styles.profileForm}>

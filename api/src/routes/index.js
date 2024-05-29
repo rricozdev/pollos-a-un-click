@@ -2,6 +2,7 @@ const { Router } = require('express');
 const usersRouter = require('./usersRouter');
 const authRouter = require('./authRouter');
 const pedidosRouter = require('./pedidosRouter');
+const productoresRouter = require('./productoresRouter');
 
 const mainRouter = Router();
 
@@ -21,6 +22,9 @@ mainRouter.use('/login', authRouter);
 
 // Pedidos
 mainRouter.use('/pedidos', pedidosRouter );
+
+// Productores
+mainRouter.use('/productores', productoresRouter)
 
 // notificaciones
 mainRouter.use('/notificaciones', (req, res) => {
