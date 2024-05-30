@@ -1,6 +1,6 @@
    .container {
     padding: 20px;
-    margin-left: 450px;
+    margin-left: 400px;
   }
   
   .heading {
@@ -21,7 +21,7 @@
   }
   
   .button {
-    padding: 12px 52px;
+    padding: 12px 22px;
     border: none;
     border-radius: 5px;
     color: white;
