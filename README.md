@@ -62,7 +62,7 @@ Debes poner tus password, los que colocaste al instalar postgres.
 
 ### Asumiendo Configuración del Cliente  
 
-Crear archivo `.env`:  
+Crear archivo `.env.local`:  
 
 En la carpeta raíz `(cliente)`, crea un archivo llamado `.env.local`.
 
