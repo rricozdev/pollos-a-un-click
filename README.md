@@ -70,9 +70,10 @@ Configurar Variables de Entorno:
 Dentro del archivo `.env`, configura las siguientes credenciales:
 
 ```plaintext
-REACT_APP_AUTH0_DOMAIN=dev-ocmc1k7u.us.auth0.com
-REACT_APP_AUTH0_CLIENT_ID=0j8NgUS9yhGwXQTk1189nnjRYQusaSMl
+REACT_APP_AUTH0_DOMAIN=----claveprivada-----
+REACT_APP_AUTH0_CLIENT_ID=-------------claveprivada-------
 ```
+Debes configurar tu propia cuenta de Auth0 con tus credenciales
 
 ### Puesta en Marcha
 Una vez que hayas realizado la instalación y configuración adecuada, puedes poner en marcha el servidor y el cliente.
