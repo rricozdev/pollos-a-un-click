@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
-            primaryKey: true, // Asegúrate de que id es la clave primaria
+            primaryKey: true, // Nos asegúramos de que id es la clave primaria
         },
         name: {
             type: DataTypes.STRING,

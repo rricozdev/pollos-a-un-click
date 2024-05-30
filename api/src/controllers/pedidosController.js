@@ -1,13 +1,67 @@
 const { Pedido } = require("../db");
 
-// Get/pedidos - obtener el listado de todos los pedidos
-const getPedidos = async () => {
-  const pedidosDb = await Pedido.findAll();
+// Get/pedidos - obtener el listado de pedidos de un productor en especifico
+// const getPedidos = async () => {
+//   const pedidosDb = await Pedido.findAll();
 
-  return pedidosDb.length !== 0
-    ? pedidosDb
-    : "No hay pedidos creados en la db...";
+//   return pedidosDb.length !== 0
+//     ? pedidosDb
+//     : "No hay pedidos creados en la db...";
+// };
+
+// const getPedidos = async (productorId) => {
+//   try {
+//     const pedidosDb = await Pedido.findAll({
+//       where: {
+//         productorId: productorId
+//       }
+//     });
+
+//     return pedidosDb.length !== 0
+//       ? pedidosDb
+//       : "No hay pedidos creados en la db para este productor...";
+//   } catch (error) {
+//     throw new Error(`Error al obtener los pedidos del Productor: ${error.message}`);
+//   }
+// };
+
+const getPedidos = async (productorId) => {
+  try {
+    const pedidosDb = await Pedido.findAll({
+      where: {
+        productorId: productorId
+      }
+    });
+
+    // Formatear la fecha de cada pedido y devolver solo los datos necesarios
+    const pedidosFormateados = pedidosDb.map((pedido) => {
+      // Convertir la fecha de string a objeto Date
+      const fecha = new Date(pedido.fecha);
+      // Formatear la fecha como "dd/mm/yyyy hh:mm:ss"
+      const fechaFormateada = `${fecha.getDate()}/${fecha.getMonth() + 1}/${fecha.getFullYear()} ${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`;
+
+      // Devolver solo los datos necesarios del pedido con la fecha formateada
+      return {
+        id: pedido.id,
+        fecha: fechaFormateada,
+        cantidad: pedido.cantidad,
+        estado: pedido.estado,
+        detalles: pedido.detalles,
+        tenderoId: pedido.tenderoId,
+        productorId: pedido.productorId,
+        createdAt: pedido.createdAt,
+        updatedAt: pedido.updatedAt
+      };
+    });
+
+    return pedidosFormateados.length !== 0
+      ? pedidosFormateados
+      : "No hay pedidos creados en la db para este productor...";
+  } catch (error) {
+    throw new Error(`Error al obtener los pedidos del Productor: ${error.message}`);
+  }
 };
+
 
 // Get/pedidos/{:id} - obtener pedidos por id de la db
 const getPedidoById = async (id) => {
@@ -24,20 +78,6 @@ const getPedidoById = async (id) => {
 
 
 
-// Post/pedidos - crear un pedido en la db
-// const createPedido = async (cantidad, estado, detalles) => {
-//     if(!cantidad || !estado || !detalles) {
-//         throw new Error("Todos los campos son obligatorios.");
-//     }
-
-//     const nuevoPedido = await Pedido.create({
-//         cantidad,
-//         estado,
-//         detalles
-//     });
-
-//     return nuevoPedido;
-// }
 // Post/pedidos - crear un pedido en la db
 const createPedido = async (cantidad, tenderoId, productorId) => {
     try {

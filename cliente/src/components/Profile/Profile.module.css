@@ -490,11 +490,27 @@
   align-items: center;
   margin-bottom: 15px;
   color: #333;
+
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
+
+.menuItem:hover {
+  background-color: rgba(79, 169, 77, 0.1); /* Cambia el color de fondo al pasar el mouse */
+}
+
+
 
 .menuItem .icon {
   margin-right: 10px;
   color: #1877f2;
+}
+
+.menuItem:hover .icon {
+  color: #4fa94d; /* Cambia el color del icono al pasar el mouse */
+  transform: scale(1.1); /* Aumenta un poco el tamaño del icono */
+  cursor: pointer;
 }
 
 .logoutItem {

@@ -10,6 +10,7 @@
     "@headlessui/tailwindcss": "^0.2.0",
     "@mui/material": "^5.15.18",
     "@remixicon/react": "^4.2.0",
+    "@tanstack/react-table": "^8.17.3",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -24,8 +25,10 @@
     "react-icons": "^5.2.1",
     "react-json-pretty": "^2.2.0",
     "react-loader-spinner": "^6.1.6",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
+    "react-transition-group": "^4.4.5",
     "sweetalert2": "^11.11.0",
     "sweetalert2-react-content": "^5.0.7",
     "web-vitals": "^2.1.4"

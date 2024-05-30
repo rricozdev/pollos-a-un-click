@@ -4,16 +4,26 @@ const {
     createPedido,
     updatePedido
 } = require('../controllers/pedidosController')
-// Get/pedidos - obtener todos los pedidos
-const getPedidosHandler = async (req, res) => {
+// Get/pedidos - obtener los pedidos de un productor en especifico, usando su `productoId`
+// const getPedidosHandler = async (req, res) => {
     
+//     try {
+//         const result = await getPedidos();
+//         res.status(200).json(result);
+//     } catch (error) {
+//         res.status(400).json({error:error.message});
+//     }
+// };
+const getPedidosHandler = async (req, res) => {
+    const productorId = req.query.productorId; // Obtener el productorId de los parámetros de la consulta
     try {
-        const result = await getPedidos();
-        res.status(200).json(result);
+      const result = await getPedidos(productorId);
+      res.status(200).json(result);
     } catch (error) {
-        res.status(400).json({error:error.message});
+      res.status(400).json({ error: error.message });
     }
-};
+  };
+
 
 // Get/pedidos/{:id} - obtener pedidos por id del controller
 const getPedidoByIdHandler = async (req, res) => {
@@ -26,18 +36,7 @@ const getPedidoByIdHandler = async (req, res) => {
     }
 };
 
-// Post/pedidos - crear un pedido solicitando al controller
-// const createPedidoHandler = async (req, res) => {
-//     try {
-//         const { cantidad, estado, detalles } = req.body;
-//         const nuevoPedido = await createPedido(cantidad, estado, detalles);
 
-//         res.status(201).json(nuevoPedido);
-//     } catch (error) {
-//         res.status(400).json({error:error.message})        
-//     }
-// };
-// Post/pedidos - crear un pedido solicitando al controller
 // Post/pedidos - crear un pedido solicitando al controller
 const createPedidoHandler = async (req, res) => {
     try {

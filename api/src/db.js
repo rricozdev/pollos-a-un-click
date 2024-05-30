@@ -92,11 +92,17 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { User, Pedido, Notificacion } = sequelize.models;
 
-User.hasMany(Pedido, { foreignKey: 'tenderoId' }); // Un usuario puede realizar muchos pedidos como tendero
-User.hasMany(Pedido, { foreignKey: 'productorId' }); // Un usuario puede realizar muchos pedidos como productor
+// User.hasMany(Pedido, { foreignKey: 'tenderoId' }); // Un usuario puede realizar muchos pedidos como tendero
+// User.hasMany(Pedido, { foreignKey: 'productorId' }); // Un usuario puede realizar muchos pedidos como productor
 
-Pedido.belongsTo(User, { as: 'tendero', foreignKey: 'tenderoId' }); // Un pedido pertenece a un tendero
-Pedido.belongsTo(User, { as: 'productor', foreignKey: 'productorId' }); // Un pedido pertenece a un productor
+// Pedido.belongsTo(User, { as: 'tendero', foreignKey: 'tenderoId' }); // Un pedido pertenece a un tendero
+// Pedido.belongsTo(User, { as: 'productor', foreignKey: 'productorId' }); // Un pedido pertenece a un productor
+
+User.hasMany(Pedido, { as: 'PedidosComoTendero', foreignKey: 'tenderoId' });
+User.hasMany(Pedido, { as: 'PedidosComoProductor', foreignKey: 'productorId' });
+
+Pedido.belongsTo(User, { as: 'Tendero', foreignKey: 'tenderoId' });
+Pedido.belongsTo(User, { as: 'Productor', foreignKey: 'productorId' });
 
 User.hasMany(Notificacion, { foreignKey: 'userId' }); // Un usuario puede tener muchas notificaciones
 Notificacion.belongsTo(User, { foreignKey: 'userId' }); // Una notificación pertenece a un usuario

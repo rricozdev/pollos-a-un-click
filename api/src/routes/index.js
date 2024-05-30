@@ -3,16 +3,10 @@ const usersRouter = require('./usersRouter');
 const authRouter = require('./authRouter');
 const pedidosRouter = require('./pedidosRouter');
 const productoresRouter = require('./productoresRouter');
+const tenderosRouter = require('./tenderosRouter');
 
 const mainRouter = Router();
 
-
-// mainRouter.use('/', (req, res) => {
-//     console.log('Estamos en landing!');
-//     res.status(200).send('Estamos en LandingPage!!!')
-// })
-
-// 4 rutas
 
 // Usuarios
 mainRouter.use('/users', usersRouter );
@@ -26,14 +20,14 @@ mainRouter.use('/pedidos', pedidosRouter );
 // Productores
 mainRouter.use('/productores', productoresRouter)
 
+// Tenderos
+mainRouter.use('/tenderos', tenderosRouter)
+
 // notificaciones
 mainRouter.use('/notificaciones', (req, res) => {
     console.log('Estamos en notificaciones');
     res.status(200).send('Estamos en Notificaciones!!!')
 } );
-
-
-
 
 
 

@@ -1,10 +1,8 @@
 const {
   searchUserByName,
-  getUserByidentification,
+  getUserByid,
   getUserByEmail,
-  getUsers,
-  getUsersWithPedidos,
-  getUserWithPedidosByIdentification,
+  getUsers,  
   createUser,
   updateUser,
   deleteUser
@@ -26,11 +24,11 @@ const getUsersHandler = async (req, res) => {
 
 // Get/users/{:identification} - obtener usuario por id
 const getUserByIdHandler = async (req, res) => {
-  const { identification } = req.params;
-  console.log("esto es identification:", identification);
+  const { id } = req.params;
+  console.log("esto es id:", id);
 
   try {
-    const user = await getUserByidentification(identification);
+    const user = await getUserByid(id);
 
     res.status(200).json(user);
   } catch (error) {

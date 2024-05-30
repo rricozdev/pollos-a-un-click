@@ -153,7 +153,7 @@
 
 
 
-const { User } = require("../db");
+const { User, Pedido } = require("../db");
 const { Op } = require("sequelize");
 const bcrypt = require("bcryptjs");
 
@@ -176,18 +176,20 @@ const searchUserByName = async (name) => {
     : `No se encontró un usuario con el nombre ${name}`;
 };
 
-// Get/users/{:identification} ---> http://localhost:3001/users/85123456
-const getUserByidentification = async (identification) => {
+// Get/users/{:id} ---> http://localhost:3001/users/8
+const getUserByid = async (id) => {
+
   const user = await User.findOne({
-    where: { identification },
+    where: { id },
+    include: [
+      { model: Pedido, as: 'PedidosComoTendero' },
+      { model: Pedido, as: 'PedidosComoProductor' }
+    ]
   });
 
   if (!user) {
-    throw new Error(
-      `No se encontró un usuario con la identificación: ${identification}`
-    );
+    throw new Error(`No se encontró un usuario con la identificación: ${id}`);
   }
-
   return user;
 };
 
@@ -202,40 +204,27 @@ const getUserByEmail = async (email) => {
   return userDbByEmail;
 };
 
-// Get/users - obteniendo usuarios
+// Get/users - obteniendo usuarios - // Método para obtener todos los usuarios con sus pedidos asociados
 const getUsers = async () => {
-  const usersDb = await User.findAll();
+  // const usersDb = await User.findAll({
+  //   include: [{ model: Pedido }, ]
+  // });
+
+  // return usersDb.length !== 0 ? usersDb : "No hay usuarios creados en la Db";
+  const usersDb = await User.findAll({
+    include: [
+      { model: Pedido, as: 'PedidosComoTendero' },
+      { model: Pedido, as: 'PedidosComoProductor' }
+    ]
+  });
 
   return usersDb.length !== 0 ? usersDb : "No hay usuarios creados en la Db";
 };
 
 
-// Método para obtener todos los usuarios con sus pedidos asociados
-const getUsersWithPedidos = async () => {
-  try {
-    const usersWithPedidos = await User.findAll({
-      include: [{ model: Pedido, as: 'tendero' }, { model: Pedido, as: 'productor' }],
-    });
-    return usersWithPedidos;
-  } catch (error) {
-    console.error("Error al obtener usuarios con pedidos:", error);
-    throw new Error("Error al obtener usuarios con pedidos");
-  }
-};
 
-// Método para obtener un usuario con sus pedidos asociados por su identification
-const getUserWithPedidosByIdentification = async (identification) => {
-  try {
-    const userWithPedidos = await User.findOne({
-      where: { identification },
-      include: [{ model: Pedido, as: 'tendero' }, { model: Pedido, as: 'productor' }],
-    });
-    return userWithPedidos;
-  } catch (error) {
-    console.error("Error al obtener usuario con pedidos:", error);
-    throw new Error("Error al obtener usuario con pedidos");
-  }
-};
+
+
 
 // Post/user - creando un usuario
 const createUser = async (name, identification, email, password, role) => {
@@ -326,11 +315,9 @@ const deleteUser = async (identification) => {
 
 module.exports = {
   searchUserByName,
-  getUserByidentification,
+  getUserByid,
   getUserByEmail,
   getUsers,
-  getUsersWithPedidos,
-  getUserWithPedidosByIdentification,
   createUser,
   updateUser,
   deleteUser,

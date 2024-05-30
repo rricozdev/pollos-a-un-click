@@ -18,7 +18,7 @@ usersRouter.get('/', getUsersHandler);
 usersRouter.get('/email', getUserByEmailHandler); // Cambiado a 'email' y asignado a getUserByEmailHandler
 
 // Get/users/:identification - params
-usersRouter.get('/:identification', getUserByIdHandler);
+usersRouter.get('/:id', getUserByIdHandler);
 
 
 // Post -users

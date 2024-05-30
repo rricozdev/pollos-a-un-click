@@ -14,7 +14,7 @@ import {
 } from "react-icons/fa";
 import { MdArrowBackIos } from "react-icons/md";
 import styles from "./Profile.module.css";
-import TenderoPedidos from "../TenderoPedidos/TenderoPedidos"; // Importa el componente TenderoPedidos
+import TenderoPedidos from "../TenderoPedidos/TenderoPedidos";
 import ProductorPedidos from "../ProductorPedidos/ProductorPedidos";
 
 const MySwal = withReactContent(Swal);
@@ -61,10 +61,13 @@ const Profile = () => {
           });
           setIsRegistered(true);
 
-          // Guardar el tenderoId en localStorage
+          // Guardar el productorId o tenderoId en localStorage
           if (userData.role === "tendero") {
             console.log("Guardando tenderoId en localStorage:", userData.id);
             localStorage.setItem("tenderoId", userData.id);
+          } else if (userData.role === "productor") {
+            console.log("Guardando productorId en localStorage:", userData.id);
+            localStorage.setItem("productorId", userData.id);
           }
         }
       } catch (error) {
@@ -197,10 +200,10 @@ const Profile = () => {
                 <FaChartLine className={styles.icon} />
                 <span>Mis Ventas</span>
               </div>
-              <div className={styles.menuItem}>
+              {/* <div className={styles.menuItem}>
                 <FaFacebookMessenger className={styles.icon} />
                 <span>Mensajes</span>
-              </div>
+              </div> */}
               <div className={styles.menuItem}>
                 <FaCalendarAlt className={styles.icon} />
                 <span>Calendario</span>
