@@ -64,10 +64,10 @@ Debes poner tus password, los que colocaste al instalar postgres.
 
 Crear archivo `.env`:  
 
-En la carpeta raíz `(cliente)`, crea un archivo llamado `.env`.
+En la carpeta raíz `(cliente)`, crea un archivo llamado `.env.local`.
 
 Configurar Variables de Entorno:
-Dentro del archivo `.env`, configura las siguientes credenciales:
+Dentro del archivo `.env.local`, configura las siguientes credenciales:
 
 ```plaintext
 REACT_APP_AUTH0_DOMAIN=----claveprivada-----
